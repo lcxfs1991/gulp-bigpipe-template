@@ -73,7 +73,7 @@ template file extension
 
 #### options.quoteChar
 Type: `String`  
-Default: `"`  
+Default: `\""\"`  
 quote char
 
 #### options.indentString
