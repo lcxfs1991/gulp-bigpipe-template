@@ -1,0 +1,34 @@
+{
+    "name": "gulp-big-pipe",
+    "version": "1.0.0",
+    "description": "gulp plugin compile html template to a function",
+    "keywords": [
+        "gulp",
+        "split",
+        "html",
+        "template",
+        "bigpipe",
+    ],
+    "homepage": "https://github.com/lcxfs1991/gulp-bigpipe-template",
+    "author": {
+        "name": "leehey",
+        "email": "lcxfs1991@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/lcxfs1991/gulp-bigpipe-template/issues"
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-util": "^3.0.6",
+        "through2": "^0.4.2",
+        "html-minifier": "^0.7.2"
+      },
+    "engines": {
+        "node": ">=0.12.0",
+        "npm": ">=1.2.10"
+    }
+}
