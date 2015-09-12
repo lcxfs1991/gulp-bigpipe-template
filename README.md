@@ -58,31 +58,31 @@ Type: `Object`
 
 #### options.tplFolder
 Type: `String`
-Default: `__dirname.replace('node_modules\\' + PLUGIN_NAME, '') + "/server/tpl/"`
+Default: `__dirname.replace('node_modules\\' + PLUGIN_NAME, '') + "/server/tpl/"`  
 template folder
 
 #### options.tplFileName
-Type: `String`
+Type: `String`  
 Default: Same as input html file
 template filename
 
 #### options.tplFileExt
-Type: `String`
-Default: `js`
+Type: `String`  
+Default: `js`  
 template file extension
 
 #### options.quoteChar
-Type: `String`
-Default: `"`
+Type: `String`  
+Default: `"`  
 quote char
 
 #### options.indentString
-Type: `String`
-Default: `    `
+Type: `String`  
+Default: `    `  
 indention string
 
 #### options.minHtmlOpt
-Type: `Object`
-Default: `{removeComments: true, collapseWhitespace: true,}`
+Type: `Object`  
+Default: `{removeComments: true, collapseWhitespace: true,}`  
 html-minifier option
 https://github.com/kangax/html-minifier
