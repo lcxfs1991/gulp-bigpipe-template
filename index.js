@@ -11,12 +11,18 @@ var through = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 var fs = require('fs');
+var path = require('path');
 var minify = require('html-minifier').minify;
 
 // const
 const PLUGIN_NAME = 'gulp-bigpipe-template';
 const TPLREGEX = /<!--\s*bigpipe\s*-->/gim;
 const tplArr = [];
+
+// path of windows and linux should be consistent
+var pathFix = function(path) {
+    return path.replace(/\\/g, '/');
+};
 
 // learn from gulp-node-simple
 var splitHtml = function(content, tplInfo) {
@@ -35,10 +41,27 @@ var escapeContent = function(content, quoteChar, indentString) {
     return content.replace(bsRegexp, '\\\\').replace(quoteRegexp, '\\' + quoteChar).replace(/\r?\n/g, nlReplace);
 };
 
+var mkdir = function(tplFolder) {
+    var childPath = pathFix(tplFolder).split('/');
+    var childPathStr = '';
+    var folderStr = '';
+    console.log(childPath);
+    for (var i = 0, len = childPath.length; i < len; i++) {
+        childPathStr += childPath[i] + '/';
+        folderStr = path.resolve(childPathStr);
+        if (!fs.existsSync(folderStr)) {
+            fs.mkdirSync(folderStr);
+        }
+    }
+    // console.log()
+};
+
 var combineFile = function(pathInfo,tplInfo) {
-    var folder = pathInfo.tplFolder;
+    var folder = path.resolve(pathInfo.tplFolder);
+    mkdir(pathInfo.tplFolder);
+
     if (!fs.existsSync(folder)) {
-        fs.mkdirSync(folder);
+        throw new PluginError(PLUGIN_NAME, folder + ' does not exist');
     }
 
     var filename = pathInfo.tplFolder + pathInfo.tplFileName + '.' + pathInfo.tplFileExt;
@@ -67,7 +90,7 @@ var combineFile = function(pathInfo,tplInfo) {
 var bigPipeTpl = function(opt) {
 
     var opt = opt || {};
-    var tplFolder = opt.tplFolder || __dirname.replace('node_modules\\' + PLUGIN_NAME, '') + 'server/tpl/';
+    var tplFolder = opt.tplFolder || pathFix(__dirname).replace('node_modules/' + PLUGIN_NAME, '') + 'server/tpl/';
     var tplFileName = opt.tplFileName || '';
     var tplFileExt = opt.tplFileExt || 'js';
     var quoteChar= opt.quoteChar || '"';
