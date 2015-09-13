@@ -1,5 +1,5 @@
 {
-    "name": "gulp-big-pipe",
+    "name": "gulp-bigpipe-template",
     "version": "1.0.0",
     "description": "gulp plugin compile html template to a function",
     "keywords": [
@@ -7,26 +7,29 @@
         "split",
         "html",
         "template",
-        "bigpipe",
+        "bigpipe"
     ],
     "homepage": "https://github.com/lcxfs1991/gulp-bigpipe-template",
+    "bugs": "https://github.com/lcxfs1991/gulp-bigpipe-template/issues",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/lcxfs1991/gulp-bigpipe-template.git"
+      },
+    "main": "index.js",
     "author": {
         "name": "leehey",
         "email": "lcxfs1991@gmail.com"
     },
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/lcxfs1991/gulp-bigpipe-template/issues"
-    },
     "dependencies": {
-
-    },
-    "devDependencies": {
         "gulp": "^3.9.0",
         "gulp-util": "^3.0.6",
         "through2": "^0.4.2",
         "html-minifier": "^0.7.2"
-      },
+    },
+    "devDependencies": {
+        
+    },
     "engines": {
         "node": ">=0.12.0",
         "npm": ">=1.2.10"

@@ -10,15 +10,14 @@ npm install gulp-bigpipe-template --save-dev
 ```
 
 ## Example
+Please use it before html-minified functions
 ### `gulpfile.js`
 ```js
 var bpTpl = require('gulp-bigpipe-template');
 
 gulp.task('tmpl', function() {
   return gulp.src('./tmpl/*.html')
-    .pipe(bpTpl({
-      
-    }))
+    .pipe(bpTpl())
     .pipe(gulp.dest('./tmpl/'));
 });
 ```
@@ -57,9 +56,9 @@ module.exports = {tpl0: tpl0,tpl1: tpl1,tpl2: tpl2,};
 Type: `Object`
 
 #### options.tplFolder
-Type: `String`
+Type: `String`  
 Default: `__dirname.replace('node_modules\\' + PLUGIN_NAME, '') + "/server/tpl/"`  
-template folder
+template folder, if your project folder is under /Users/lcxfs1991/project/, and you hope to save the template filder under /Users/lcxfs1991/project/server/tpl, you can set this config as `server/tpl/`
 
 #### options.tplFileName
 Type: `String`  
@@ -86,3 +85,7 @@ Type: `Object`
 Default: `{removeComments: true, collapseWhitespace: true,}`  
 html-minifier option
 https://github.com/kangax/html-minifier
+
+## Changelog
+* 1.0.0 The first version
+* 1.0.1 fix tplFolder creation bug
