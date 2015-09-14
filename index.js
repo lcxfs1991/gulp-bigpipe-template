@@ -45,7 +45,7 @@ var mkdir = function(tplFolder) {
     var childPath = pathFix(tplFolder).split('/');
     var childPathStr = '';
     var folderStr = '';
-    console.log(childPath);
+    
     for (var i = 0, len = childPath.length; i < len; i++) {
         childPathStr += childPath[i] + '/';
         folderStr = path.resolve(childPathStr);
@@ -53,7 +53,7 @@ var mkdir = function(tplFolder) {
             fs.mkdirSync(folderStr);
         }
     }
-    // console.log()
+    console.log('Your tempalte folder should be ' + folderStr);
 };
 
 var combineFile = function(pathInfo,tplInfo) {
