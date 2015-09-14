@@ -25,11 +25,13 @@ var pathFix = function(path) {
 };
 
 // learn from gulp-node-simple
-var splitHtml = function(content, tplInfo) {
+var splitHtml = function(content, tplInfo, minifyOpt) {
     var arr = content.split(TPLREGEX);
 
     for (var i = 0, len = arr.length; i < len; i++) {
-        tplArr.push(escapeContent(arr[i], tplInfo.quoteChar, tplInfo.indentString));
+        var arrContent = (minifyOpt.isHtmlMinifiedSupport) ? 
+                          minify(arr[i], minifyOpt.minHtmlOpt) : arr[i];
+        tplArr.push(escapeContent(arrContent, tplInfo.quoteChar, tplInfo.indentString));
     }
 };
 
@@ -99,6 +101,7 @@ var bigPipeTpl = function(opt) {
         removeComments: true,
         collapseWhitespace: true,
     };
+    var isHtmlMinifiedSupport = opt.isHtmlMinifiedSupport || false;
    
     // stream pipe
     return through.obj(function(file, enc, cb) {
@@ -109,14 +112,18 @@ var bigPipeTpl = function(opt) {
         else if (file.isBuffer()) {
             tplFileName = file.path.replace(file.base, '').replace(/\.\w+/gi, '') || 'tpl';
             var content = String(file.contents);
+
             splitHtml(content, {
                 tplFolder: tplFolder,
                 tplFileName: tplFileName,
                 tplFileExt: tplFileExt,
-                minHtmlOpt: minHtmlOpt,
                 quoteChar: quoteChar,
                 indentString: indentString
+            }, {
+                minHtmlOpt: minHtmlOpt,
+                isHtmlMinifiedSupport: isHtmlMinifiedSupport
             });
+
             combineFile({
                 tplFolder: tplFolder,
                 tplFileName: tplFileName,

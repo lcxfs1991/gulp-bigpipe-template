@@ -80,6 +80,11 @@ Type: `String`
 Default: `    `  
 indention string
 
+### options.isHtmlMinifiedSupport
+Type: `Boolean`
+Default: true
+Support html-minifier or not
+
 #### options.minHtmlOpt
 Type: `Object`  
 Default: `{removeComments: true, collapseWhitespace: true,}`  
@@ -88,4 +93,5 @@ https://github.com/kangax/html-minifier
 
 ## Changelog
 * 1.0.0 The first version
-* 1.0.3 fix tplFolder creation bug
+* 1.0.3 Fix tplFolder creation bug
+* 1.0.4 Support html-minifier
