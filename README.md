@@ -94,4 +94,4 @@ https://github.com/kangax/html-minifier
 ## Changelog
 * 1.0.0 The first version
 * 1.0.3 Fix tplFolder creation bug
-* 1.0.4 Support html-minifier
+* 1.1.0 Support html-minifier

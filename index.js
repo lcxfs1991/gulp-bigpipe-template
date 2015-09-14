@@ -101,7 +101,7 @@ var bigPipeTpl = function(opt) {
         removeComments: true,
         collapseWhitespace: true,
     };
-    var isHtmlMinifiedSupport = opt.isHtmlMinifiedSupport || false;
+    var isHtmlMinifiedSupport = opt.isHtmlMinifiedSupport || true;
    
     // stream pipe
     return through.obj(function(file, enc, cb) {
